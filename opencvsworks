@@ -39,4 +39,40 @@ cv.imshow('cat',img)
 cv.waitKey(0)
 
 
-#
+#rescaling videos and images
+
+import cv2 as cv
+from cv2 import destroyAllWindows
+
+img=cv.imread('cat.png')
+cv.imshow('cat',img)
+
+def rescale(frame,scale=0.25):
+    width=int(frame.shape[1]*scale)
+    height=int(frame.shape[0]*scale)
+    dimensions=(width,height)
+
+    return cv.resize(frame,dimensions,interpolation=cv.INTER_AREA)
+ 
+    capture=cv.VideoCapture('vid')#pathdd
+
+resizedimg=rescale(img)
+cv.imshow('reshapedimg',resizedimg)
+capture=cv.VideoCapture('vid.mp4')
+
+while True:
+    isTrue,frame=capture.read()
+
+    video_resized=rescale(frame)
+
+    cv.imshow("video",frame)
+    cv.imshow("resied",video_resized)
+
+    if cv.waitKey(0)=='d'& 0xFF==ord('d'):
+        break
+capture.release()
+destroyAllWindows(0)
+
+
+
+

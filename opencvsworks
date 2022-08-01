@@ -94,7 +94,29 @@ trans=translate(img,-200,-1000)
 cv.imshow('cat',trans)
 cv.waitKey(0)
 
+#ROTATING A IMAGE
+import cv2 as cv
+import numpy as np
+img=cv.imread('apple.jpg')
+cv.imshow('original',img)
 
+def rotate(img,angle,rotpoint=None):
+
+    (height,width) =img.shape[:2]
+
+    if rotpoint is None:
+
+        rotpoint=(width//2,height//2)
+
+    rotmat=cv.getRotationMatrix2D(rotpoint,angle,1.0)
+
+    dimensions=(width,height)
+
+    return cv.warpAffine(img, rotmat,dimensions)
+
+trans=rotate(img,180)# CHANGE VALUE HERE
+cv.imshow('roto',trans)
+cv.waitKey(0)
 
 
 

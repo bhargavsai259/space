@@ -73,6 +73,28 @@ while True:
 capture.release()
 destroyAllWindows(0)
 
+#MOVE IMAGE TO L OR R SIDE OR UP OR DOWN
+
+import cv2 as cv
+import numpy as np
+img=cv.imread('cat.png')
+def translate(img,x,y):
+    transmat=np.float32([[1,0,x],[0,1,y]])
+    dimensions=(img.shape[1],img.shape[0])
+    return cv.warpAffine(img,transmat,dimensions)
+'''
+-x->left
+-y->up 
+x->right
+y->down
+'''
+
+
+trans=translate(img,-200,-1000)
+cv.imshow('cat',trans)
+cv.waitKey(0)
+
+
 
 
 

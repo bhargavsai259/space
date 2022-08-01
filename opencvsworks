@@ -118,5 +118,52 @@ trans=rotate(img,180)# CHANGE VALUE HERE
 cv.imshow('roto',trans)
 cv.waitKey(0)
 
+#FLIPS THE PHOTOS
+
+import cv2 as cv
+img=cv.imread('apple.jpg')
+
+cv.imshow('original',img)
+flip=cv.flip(img,-1)  #rotates 90 degees depending on flip value
+cv.imshow('fliped',flip)
+cv.waitKey(0)
 
 
+
+# CROPING IMAGES
+
+import cv2 as cv
+img=cv.imread('apple.jpg')
+
+
+cropped=img[100:800,500:600]  # ENTER CROP VALUES HERE
+cv.imshow('image',img)
+cv.imshow('croped',cropped)
+cv.waitKey(0)
+
+
+# COLOR TO GRAY IMAGES
+
+import cv2 as cv
+img=cv.imread('apple.jpg')
+
+gray=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+cv.imshow('image',img)
+cv.imshow('gray',gray)
+cv.waitKey(0)
+
+
+
+
+#EDGES BY  CANNY
+
+import cv2 as cv
+img=cv.imread('apple.jpg')
+
+
+cv.imshow('image',img)
+canny=cv.Canny(img,125,300)
+cv.imshow('edges by canny',canny)
+
+
+cv.waitKey(0)
